@@ -2,7 +2,7 @@ import { MoviesCard } from "./MoviesCard";
 import { get } from "../../utils/httpClient";
 import { useState, useEffect } from "react";
 
-const MoviesGrid = () => {
+export const MoviesGrid = () => {
   const [movies, setMovie] = useState([]);
 
   useEffect(() => {
@@ -19,5 +19,3 @@ const MoviesGrid = () => {
     </ul>
   );
 };
-
-export default MoviesGrid;

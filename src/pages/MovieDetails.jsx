@@ -2,7 +2,7 @@ import { get } from "../../utils/httpClient";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const MovieDetails = () => {
+export const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
 
@@ -52,5 +52,3 @@ const MovieDetails = () => {
     </div>
   );
 };
-
-export default MovieDetails;

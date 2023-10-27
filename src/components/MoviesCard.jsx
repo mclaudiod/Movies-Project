@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const MoviesCard = ({ movie }) => {
+export const MoviesCard = ({ movie }) => {
   const imgURL = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
 
   return (
@@ -12,5 +12,3 @@ const MoviesCard = ({ movie }) => {
     </li>
   );
 };
-
-export default MoviesCard;

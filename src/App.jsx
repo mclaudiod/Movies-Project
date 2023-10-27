@@ -2,7 +2,7 @@ import { LandingPage } from "./pages/LandingPage";
 import { MovieDetails } from "./pages/MovieDetails";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-const App = () => {
+export const App = () => {
   return (
     <BrowserRouter>
       <header>
@@ -17,5 +17,3 @@ const App = () => {
     </BrowserRouter>
   );
 };
-
-export default App;
