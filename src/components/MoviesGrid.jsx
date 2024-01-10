@@ -12,7 +12,7 @@ export const MoviesGrid = () => {
   }, []);
 
   return (
-    <ul className="moviesGrid">
+    <ul className="">
       {movies.map((movie) => (
         <MoviesCard key={movie.id} movie={movie} />
       ))}

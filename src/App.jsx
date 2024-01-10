@@ -7,7 +7,7 @@ export const App = () => {
     <BrowserRouter>
       <header>
         <Link to="/">
-          <h1 className="title">MOVIES</h1>
+          <h1 className="">MOVIES</h1>
         </Link>
       </header>
       <Routes>

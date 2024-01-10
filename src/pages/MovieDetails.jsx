@@ -19,10 +19,10 @@ export const MovieDetails = () => {
   const imgURL = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
 
   return (
-    <div className="contenedorDetalle">
-      <img className="col" src={imgURL} alt={movie.title} />
-      <div className="movieDetalle col">
-        <p className="item">
+    <div className="">
+      <img className="" src={imgURL} alt={movie.title} />
+      <div className="">
+        <p className="">
           <strong>Titulo:</strong>
           {movie.title}
         </p>
