@@ -12,10 +12,12 @@ export const MoviesGrid = () => {
   }, []);
 
   return (
-    <ul className="">
-      {movies.map((movie) => (
-        <MoviesCard key={movie.id} movie={movie} />
-      ))}
-    </ul>
+    <main className="container mx-auto">
+      <ul className="grid gap-16 grid-cols-4">
+        {movies.map((movie) => (
+          <MoviesCard key={movie.id} movie={movie} />
+        ))}
+      </ul>
+    </main>
   );
 };
