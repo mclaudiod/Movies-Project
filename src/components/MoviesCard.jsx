@@ -4,10 +4,14 @@ export const MoviesCard = ({ movie }) => {
   const imgURL = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
 
   return (
-    <li className="flex flex-col rounded border-4 border-black overflow-hidden shadow-lg shadow-black">
-      <Link className="grow flex flex-col" to={`/movie/${movie.id}`}>
-        <img className="border-b-4 border-black" src={imgURL} alt={movie.title} />
-        <div className="text-lg font-bold text-center p-6">{movie.title}</div>
+    <li className="rounded border-4 border-black shadow-lg shadow-black h-full">
+      <Link className="flex flex-col h-full" to={`/movie/${movie.id}`}>
+        <img
+          className="border-b-4 border-black"
+          src={imgURL}
+          alt={movie.title}
+        />
+        <p className="text-lg font-bold text-center flex items-center justify-center h-20 mx-4">{movie.title}</p>
       </Link>
     </li>
   );

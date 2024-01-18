@@ -13,7 +13,7 @@ export const MoviesGrid = () => {
 
   return (
     <main className="container mx-auto">
-      <ul className="grid gap-16 grid-cols-4">
+      <ul className="grid gap-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
         {movies.map((movie) => (
           <MoviesCard key={movie.id} movie={movie} />
         ))}

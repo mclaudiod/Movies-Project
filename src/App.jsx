@@ -11,8 +11,8 @@ export const App = () => {
         </Link>
       </header>
       <Routes>
-        <Route path="/" element={<LandingPage/>} />
-        <Route path="/movie/:movieId" element={<MovieDetails/>} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/movie/:movieId" element={<MovieDetails />} />
       </Routes>
     </BrowserRouter>
   );
