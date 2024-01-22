@@ -7,11 +7,11 @@ export const MoviesCard = ({ movie }) => {
     <li className="rounded border-4 border-black shadow-lg shadow-black h-full">
       <Link className="flex flex-col h-full" to={`/movie/${movie.id}`}>
         <img
-          className="border-b-4 border-black"
+          className="h-full border-b-4 border-black"
           src={imgURL}
           alt={movie.title}
         />
-        <p className="text-lg font-bold text-center flex items-center justify-center h-20 mx-4">{movie.title}</p>
+        <div className="text-lg font-bold text-center flex items-center justify-center h-20 mx-4">{movie.title}</div>
       </Link>
     </li>
   );

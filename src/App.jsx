@@ -1,3 +1,4 @@
+import { MoviesHeader } from "./components/MoviesHeader";
 import { LandingPage } from "./pages/LandingPage";
 import { MovieDetails } from "./pages/MovieDetails";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
@@ -5,15 +6,15 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 export const App = () => {
   return (
     <BrowserRouter>
-      <header>
-        <Link to="/">
-          <h1 className="">MOVIES</h1>
-        </Link>
+      <header className="sticky top-0">
+        <MoviesHeader />
       </header>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/movie/:movieId" element={<MovieDetails />} />
-      </Routes>
+      <main className="">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/movie/:movieId" element={<MovieDetails />} />
+        </Routes>
+      </main>
     </BrowserRouter>
   );
 };
