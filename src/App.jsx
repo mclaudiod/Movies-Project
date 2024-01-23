@@ -9,7 +9,7 @@ export const App = () => {
       <header className="sticky top-0">
         <MoviesHeader />
       </header>
-      <main className="">
+      <main className="bg-gray-300">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/movie/:movieId" element={<MovieDetails />} />
