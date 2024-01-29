@@ -6,7 +6,7 @@ export const MoviesGrid = () => {
   const [movies, setMovie] = useState([]);
 
   useEffect(() => {
-    get("/discover/movie").then((data) => {
+    get("/movie/now_playing").then((data) => {
       setMovie(data.results);
     });
   }, []);

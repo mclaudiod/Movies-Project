@@ -1,4 +1,5 @@
 import { MoviesHeader } from "./components/MoviesHeader";
+import { MoviesFooter } from "./components/MoviesFooter";
 import { LandingPage } from "./pages/LandingPage";
 import { MovieDetails } from "./pages/MovieDetails";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
@@ -15,6 +16,7 @@ export const App = () => {
           <Route path="/movie/:movieId" element={<MovieDetails />} />
         </Routes>
       </main>
+      <MoviesFooter />
     </BrowserRouter>
   );
 };
