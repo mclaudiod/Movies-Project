@@ -1,7 +1,16 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 export const MoviesHeader = () => {
   const location = useLocation();
+  const history = useHistory();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set("query", e.target.value);
+    history.replace({ search: searchParams.toString() });
+  };
 
   return (
     <header className="sticky top-0">
@@ -117,6 +126,8 @@ export const MoviesHeader = () => {
               <input
                 type="text"
                 id="search-navbar"
+                value={searchQuery}
+                onChange={handleSearch}
                 className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-600 rounded-lg bg-gray-700 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 text-white"
                 placeholder="Search..."
               />
@@ -126,9 +137,7 @@ export const MoviesHeader = () => {
                 <Link
                   to="/now_playing"
                   className={
-                    location.pathname === "/now_playing"
-                      ? "text-blue-500"
-                      : ""
+                    location.pathname === "/now_playing" ? "text-blue-500" : ""
                   }
                 >
                   Now Playing
@@ -138,9 +147,7 @@ export const MoviesHeader = () => {
                 <Link
                   to="/popular"
                   className={
-                    location.pathname === "/popular"
-                      ? "text-blue-500"
-                      : ""
+                    location.pathname === "/popular" ? "text-blue-500" : ""
                   }
                 >
                   Popular
@@ -150,9 +157,7 @@ export const MoviesHeader = () => {
                 <Link
                   to="/top_rated"
                   className={
-                    location.pathname === "/top_rated"
-                      ? "text-blue-500"
-                      : ""
+                    location.pathname === "/top_rated" ? "text-blue-500" : ""
                   }
                 >
                   Top Rated
@@ -162,9 +167,7 @@ export const MoviesHeader = () => {
                 <Link
                   to="/upcoming"
                   className={
-                    location.pathname === "/upcoming"
-                      ? "text-blue-500"
-                      : ""
+                    location.pathname === "/upcoming" ? "text-blue-500" : ""
                   }
                 >
                   Upcoming

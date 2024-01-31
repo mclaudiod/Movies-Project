@@ -5,7 +5,7 @@ export const MoviesFooter = () => {
     <footer className="bg-gray-800 bottom-0">
       <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
         <span className="text-sm text-gray-400 sm:text-center">
-          © 2023{" "}
+          © 2024{" "}
           <Link to="https://github.com/mclaudiod" className="hover:underline">
             Claudio D. Morales
           </Link>

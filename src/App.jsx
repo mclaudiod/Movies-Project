@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { MoviesHeader } from "./components/MoviesHeader";
 import { LandingPage } from "./pages/LandingPage";
 import { MoviesGrid } from "./components/MoviesGrid";
@@ -7,7 +6,6 @@ import { MovieDetails } from "./pages/MovieDetails";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export const App = () => {
-  const [searchResults, setSearchResults] = useState([]);
 
   return (
     <BrowserRouter>

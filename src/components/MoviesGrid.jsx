@@ -6,17 +6,24 @@ import { useLocation } from "react-router-dom";
 
 export const MoviesGrid = () => {
   const [movies, setMovies] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const location = useLocation();
 
   useEffect(() => {
-    get(`/movie${location.pathname}`)
+    const searchParams = new URLSearchParams(location.search);
+    const page = parseInt(searchParams.get("page")) || 1;
+
+    get(`/movie${location.pathname}?page=${page}`)
       .then((data) => {
         setMovies(data.results);
+        setCurrentPage(data.page);
+        setTotalPages(data.total_pages);
       })
       .catch((error) => {
         console.error("Error fetching movies:", error);
       });
-  }, [location.pathname]);
+  }, [location.pathname, location.search]);
 
   return (
     <main className="bg-gray-300">
@@ -26,7 +33,7 @@ export const MoviesGrid = () => {
             <MoviesCard key={movie.id} movie={movie} />
           ))}
         </ul>
-        <MoviesPagination/>
+        <MoviesPagination currentPage={currentPage} totalPages={totalPages}/>
       </div>
     </main>
   );
