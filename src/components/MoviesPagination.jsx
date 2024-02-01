@@ -1,14 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 export const MoviesPagination = ({ currentPage, totalPages }) => {
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
+  const location = useLocation();
+  const { movieId } = useParams();
+
+  const pageUrl = (page) => {
+    if (movieId) {
+      return `/movie/${movieId}?page=${page}`;
+    } else {
+      const searchParams = new URLSearchParams(location.search);
+      searchParams.set("page", page);
+      return `${location.pathname}?${searchParams.toString()}`;
+    };
+  };
 
   return (
     <div className="flex items-center justify-between mt-8">
       {!isFirstPage && (
         <Link
-          to={`?page=${currentPage - 1}`}
+          to={pageUrl(currentPage - 1)}
           className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700"
         >
           <svg
@@ -31,7 +43,7 @@ export const MoviesPagination = ({ currentPage, totalPages }) => {
       )}
       {!isLastPage && (
         <Link
-          to={`?page=${currentPage + 1}`}
+          to={pageUrl(currentPage + 1)}
           className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700"
         >
           Next

@@ -13,8 +13,15 @@ export const MoviesGrid = () => {
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const page = parseInt(searchParams.get("page")) || 1;
+    const query = searchParams.get("search") || "";
 
-    get(`/movie${location.pathname}?page=${page}`)
+    let url = `/movie${location.pathname}?page=${page}`;
+
+    if (query) {
+      url = `/search/movie?query=${query}&page=${page}`;
+    }
+
+    get(url)
       .then((data) => {
         setMovies(data.results);
         setCurrentPage(data.page);
@@ -33,7 +40,7 @@ export const MoviesGrid = () => {
             <MoviesCard key={movie.id} movie={movie} />
           ))}
         </ul>
-        <MoviesPagination currentPage={currentPage} totalPages={totalPages}/>
+        <MoviesPagination currentPage={currentPage} totalPages={totalPages} />
       </div>
     </main>
   );

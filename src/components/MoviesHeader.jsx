@@ -1,15 +1,13 @@
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export const MoviesHeader = () => {
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-    const searchParams = new URLSearchParams(location.search);
-    searchParams.set("query", e.target.value);
-    history.replace({ search: searchParams.toString() });
+  const handleSearch = () => {
+    navigate(`/?search=${searchQuery}`);
   };
 
   return (
@@ -72,6 +70,11 @@ export const MoviesHeader = () => {
               <input
                 type="text"
                 id="search-navbar"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleSearch();
+                }}
                 className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-600 rounded-lg bg-gray-700 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 text-white"
                 placeholder="Search..."
               />
@@ -127,7 +130,10 @@ export const MoviesHeader = () => {
                 type="text"
                 id="search-navbar"
                 value={searchQuery}
-                onChange={handleSearch}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleSearch();
+                }}
                 className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-600 rounded-lg bg-gray-700 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 text-white"
                 placeholder="Search..."
               />
