@@ -13,7 +13,7 @@ export const MoviesPagination = ({ currentPage, totalPages }) => {
       const searchParams = new URLSearchParams(location.search);
       searchParams.set("page", page);
       return `${location.pathname}?${searchParams.toString()}`;
-    };
+    }
   };
 
   return (
@@ -21,7 +21,7 @@ export const MoviesPagination = ({ currentPage, totalPages }) => {
       {!isFirstPage && (
         <Link
           to={pageUrl(currentPage - 1)}
-          className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700"
+          className="flex items-center justify-center px-4 h-10 text-white bg-gray-800 rounded-lg hover:bg-gray-700"
         >
           <svg
             className="w-3.5 h-3.5 me-2 rtl:rotate-180"
@@ -44,7 +44,7 @@ export const MoviesPagination = ({ currentPage, totalPages }) => {
       {!isLastPage && (
         <Link
           to={pageUrl(currentPage + 1)}
-          className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700"
+          className="flex items-center justify-center px-4 h-10 text-white bg-gray-800 rounded-lg hover:bg-gray-700"
         >
           Next
           <svg

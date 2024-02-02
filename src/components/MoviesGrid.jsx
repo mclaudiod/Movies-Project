@@ -2,17 +2,25 @@ import { MoviesCard } from "./MoviesCard";
 import { MoviesPagination } from "./MoviesPagination";
 import { get } from "../../utils/httpClient";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const MoviesGrid = () => {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    const page = parseInt(searchParams.get("page")) || 1;
+    const page =
+      parseInt(
+        searchParams.get("page") && searchParams.get("page") < 1
+          ? navigate("/404")
+          : searchParams.get("page") > 500
+          ? navigate("/404")
+          : searchParams.get("page")
+      ) || 1;
     const query = searchParams.get("search") || "";
 
     let url = `/movie${location.pathname}?page=${page}`;
@@ -23,9 +31,13 @@ export const MoviesGrid = () => {
 
     get(url)
       .then((data) => {
-        setMovies(data.results);
-        setCurrentPage(data.page);
-        setTotalPages(data.total_pages);
+        if (page > data.total_pages) {
+          navigate("/404");
+        } else {
+          setMovies(data.results);
+          setCurrentPage(data.page);
+          setTotalPages(data.total_pages);
+        }
       })
       .catch((error) => {
         console.error("Error fetching movies:", error);
@@ -35,7 +47,7 @@ export const MoviesGrid = () => {
   return (
     <main className="bg-gray-300">
       <div className="container mx-auto py-8">
-        <ul className="grid gap-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <ul className="grid gap-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
           {movies.map((movie) => (
             <MoviesCard key={movie.id} movie={movie} />
           ))}
