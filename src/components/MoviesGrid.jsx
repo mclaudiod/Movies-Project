@@ -13,15 +13,18 @@ export const MoviesGrid = () => {
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    const page =
-      parseInt(
-        searchParams.get("page") && searchParams.get("page") < 1
-          ? navigate("/404")
-          : searchParams.get("page") > 500
-          ? navigate("/404")
-          : searchParams.get("page")
-      ) || 1;
-    const query = searchParams.get("search") || "";
+    const page = parseInt(searchParams.get("page")) || 1;
+    const query = searchParams.get("search");
+
+    if (page > 500 || page < 1) {
+      navigate("/404");
+      return;
+    }
+
+    if (query === "") {
+      navigate("/404");
+      return;
+    }
 
     let url = `/movie${location.pathname}?page=${page}`;
 
@@ -45,7 +48,7 @@ export const MoviesGrid = () => {
   }, [location.pathname, location.search]);
 
   return (
-    <main className="bg-gray-300">
+    <main className="bg-gray-300 min-h-screen">
       <div className="container mx-auto py-8">
         <ul className="grid gap-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
           {movies.map((movie) => (

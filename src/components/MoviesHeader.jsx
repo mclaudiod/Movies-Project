@@ -11,6 +11,10 @@ export const MoviesHeader = () => {
     navigate(`/?search=${searchQuery}`);
   };
 
+  const handleLink = () => {
+    window.scrollTo(0, 0);
+  };
+
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
@@ -82,7 +86,8 @@ export const MoviesHeader = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") handleSearch();
+                    if (e.key === "Enter" && searchQuery != "")
+                      handleSearch(), handleLink();
                   }}
                   className="block w-full p-2 ps-10 text-sm border border-gray-600 rounded-lg bg-gray-700 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 text-white"
                   placeholder="Search..."
@@ -105,6 +110,7 @@ export const MoviesHeader = () => {
                           : ""
                       }
                     `}
+                    onClick={handleLink}
                   >
                     Now Playing
                   </Link>
@@ -119,6 +125,7 @@ export const MoviesHeader = () => {
                           : ""
                       }
                     `}
+                    onClick={handleLink}
                   >
                     Popular
                   </Link>
@@ -133,6 +140,7 @@ export const MoviesHeader = () => {
                           : ""
                       }
                     `}
+                    onClick={handleLink}
                   >
                     Top Rated
                   </Link>
@@ -147,6 +155,7 @@ export const MoviesHeader = () => {
                           : ""
                       }
                     `}
+                    onClick={handleLink}
                   >
                     Upcoming
                   </Link>
