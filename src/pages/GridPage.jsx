@@ -1,5 +1,5 @@
 import { MoviesGrid } from "../components/MoviesGrid";
 
-export const GridPages = () => {
+export const GridPage = () => {
   return <MoviesGrid />;
 };

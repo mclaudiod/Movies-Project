@@ -21,7 +21,7 @@ export const MoviesPagination = ({ currentPage, totalPages }) => {
   };
 
   return (
-    <div className="flex items-center justify-between mt-8">
+    <div className="flex items-center justify-between mt-7">
       {!isFirstPage && (
         <Link
           to={pageUrl(currentPage - 1)}

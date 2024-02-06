@@ -1,17 +1,20 @@
 import { MoviesCard } from "./MoviesCard";
 import { MoviesPagination } from "./MoviesPagination";
+import { MoviesLoading } from "./MoviesLoading";
 import { get } from "../../utils/httpClient";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const MoviesGrid = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
     const searchParams = new URLSearchParams(location.search);
     const page = parseInt(searchParams.get("page")) || 1;
     const query = searchParams.get("search");
@@ -44,19 +47,26 @@ export const MoviesGrid = () => {
       })
       .catch((error) => {
         console.error("Error fetching movies:", error);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
       });
   }, [location.pathname, location.search]);
 
+  if (loading) {
+    return <MoviesLoading />;
+  }
+
   return (
-    <main className="bg-gray-300 min-h-screen">
-      <div className="container mx-auto py-8">
-        <ul className="grid gap-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
-          {movies.map((movie) => (
-            <MoviesCard key={movie.id} movie={movie} />
-          ))}
-        </ul>
-        <MoviesPagination currentPage={currentPage} totalPages={totalPages} />
+    <div className="container m-auto pb-7 pt-24">
+      <div className="grid gap-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+        {movies.map((movie) => (
+          <MoviesCard key={movie.id} movie={movie} />
+        ))}
       </div>
-    </main>
+      <MoviesPagination currentPage={currentPage} totalPages={totalPages} />
+    </div>
   );
 };

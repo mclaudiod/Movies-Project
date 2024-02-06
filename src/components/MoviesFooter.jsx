@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export const MoviesFooter = () => {
   return (
-    <footer className="bg-gray-800 bottom-0">
+    <div className="bg-gray-800 bottom-0">
       <div className="w-full mx-auto max-w-screen-xl p-4">
         <span className="text-sm text-gray-400">
           © 2024{" "}
@@ -12,6 +12,6 @@ export const MoviesFooter = () => {
           . All Rights Reserved.
         </span>
       </div>
-    </footer>
+    </div>
   );
 };
