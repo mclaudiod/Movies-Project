@@ -51,22 +51,21 @@ export const MoviesGrid = () => {
       .finally(() => {
         setTimeout(() => {
           setLoading(false);
-        }, 500);
+        }, 1000);
       });
   }, [location.pathname, location.search]);
 
-  if (loading) {
-    return <MoviesLoading />;
-  }
-
   return (
-    <div className="container m-auto pb-7 pt-24">
-      <div className="grid gap-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
-        {movies.map((movie) => (
-          <MoviesCard key={movie.id} movie={movie} />
-        ))}
+    <>
+      {loading && <MoviesLoading />}
+      <div className="container min-h-screen m-auto pb-7 pt-24">
+        <div className="grid gap-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+          {movies.map((movie) => (
+            <MoviesCard key={movie.id} movie={movie} />
+          ))}
+        </div>
+        <MoviesPagination currentPage={currentPage} totalPages={totalPages} />
       </div>
-      <MoviesPagination currentPage={currentPage} totalPages={totalPages} />
-    </div>
+    </>
   );
 };

@@ -20,7 +20,7 @@ export const MoviesHeader = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-gray-800">
+    <nav className="fixed top-0 left-0 right-0 bg-gray-800 z-20">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <div className="inline-flex justify-between grow w-full md:w-auto">
           <Link

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const MoviesCard = ({ movie, onLoad }) => {
+export const MoviesCard = ({ movie }) => {
   let imgURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
   if (movie.poster_path === null) {
@@ -14,7 +14,6 @@ export const MoviesCard = ({ movie, onLoad }) => {
           className="h-full w-full"
           src={imgURL}
           alt={movie.title}
-          onLoad={onLoad}
         />
         <div className="text-white text-lg font-bold text-center flex items-center justify-center h-20 px-4">
           {movie.title}
