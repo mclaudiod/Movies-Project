@@ -15,6 +15,7 @@ export const MoviesGrid = () => {
 
   useEffect(() => {
     setLoading(true);
+    document.body.classList.add("overflow-hidden");
     const searchParams = new URLSearchParams(location.search);
     const page = parseInt(searchParams.get("page")) || 1;
     const query = searchParams.get("search");
@@ -51,7 +52,8 @@ export const MoviesGrid = () => {
       .finally(() => {
         setTimeout(() => {
           setLoading(false);
-        }, 1000);
+          document.body.classList.remove("overflow-hidden");
+        }, 5000);
       });
   }, [location.pathname, location.search]);
 

@@ -11,6 +11,7 @@ export const MoviesCard = ({ movie }) => {
     <div className="rounded border-8 border-gray-800 bg-gray-800 h-full hover:border-gray-700 hover:bg-gray-700">
       <Link className="flex flex-col h-full w-full" to={`/movie/${movie.id}`}>
         <img
+          loading="eager"
           className="h-full w-full"
           src={imgURL}
           alt={movie.title}
