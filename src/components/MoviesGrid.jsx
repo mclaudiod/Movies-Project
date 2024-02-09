@@ -53,7 +53,7 @@ export const MoviesGrid = () => {
         setTimeout(() => {
           setLoading(false);
           document.body.classList.remove("overflow-hidden");
-        }, 5000);
+        }, 2000);
       });
   }, [location.pathname, location.search]);
 
