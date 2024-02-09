@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
+body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-color: rgb(209 213 219);
+}
+
+#root {
+    display: contents;
 }
